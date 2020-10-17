@@ -8,6 +8,9 @@
 /.pnp
 .pnp.js
 
+# credentials
+**/*.ini
+
 # testing
 /coverage
 
