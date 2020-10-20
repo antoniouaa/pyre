@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import { Profile } from "../Components/Profile/Profile";
 import "./Response.css";
@@ -6,16 +7,13 @@ import "./Response.css";
 export function Response() {
   const [results, setResults] = useState([]);
   function fetchData() {
-    fetch("http://localhost:5000/users")
-      .then((response) => response.json())
-      .then((data) => setResults(data))
+    axios
+      .get("/users")
+      .then((data) => setResults(data.data))
       .catch((err) => console.log(err));
   }
 
   useEffect(() => {
-    setTimeout(fetchData, 1000);
-    setTimeout(fetchData, 1000);
-    setTimeout(fetchData, 1000);
     setTimeout(fetchData, 1000);
   }, []);
 
@@ -25,7 +23,13 @@ export function Response() {
         {results.map((result) => {
           const { id, username, name, email } = result;
           return (
-            <Profile id={id} username={username} name={name} email={email} />
+            <Profile
+              key={id}
+              id={id}
+              username={username}
+              name={name}
+              email={email}
+            />
           );
         })}
       </ul>
