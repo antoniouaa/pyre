@@ -1,16 +1,10 @@
 .Navbar {
     background: rgb(176, 0, 0);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     color: #fff;
     min-width: 768px;
-}
-
-.Navbar .logo {
-    margin-left: 50px;
-    margin-right: auto;
-    cursor: pointer;
 }
 
 .Navbar .nav-menu {
@@ -33,9 +27,8 @@
 }
 
 .Navbar .Navbar-Link:hover {
-    background-color: #6d76f7;
+    background-color: white;
+    color: rgb(176, 0, 0);
     border-radius: 4px;
     transition: all 0.2s ease-out;
 }
-
-.Navbar .Menu-Icon {}

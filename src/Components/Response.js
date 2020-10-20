@@ -23,13 +23,7 @@ export function Response() {
         {results.map((result) => {
           const { id, username, name, email } = result;
           return (
-            <Profile
-              key={id}
-              id={id}
-              username={username}
-              name={name}
-              email={email}
-            />
+            <Profile id={id} username={username} name={name} email={email} />
           );
         })}
       </ul>

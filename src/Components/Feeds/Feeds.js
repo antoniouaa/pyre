@@ -1,9 +1,11 @@
 import React from "react";
 import { Response } from "../Response";
 
-export function Body(props) {
+import "./Feeds.css";
+
+export function Feeds(props) {
   return (
-    <div className="Content">
+    <div className="content">
       <Response />
     </div>
   );
