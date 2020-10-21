@@ -29,3 +29,10 @@ input {
     width: 3rem;
     justify-self: center;
 }
+
+.list-container {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

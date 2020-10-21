@@ -1,39 +1,43 @@
-import React from "react";
-import { Response } from "../Response";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+import { Profile } from "../Profile/Profile";
+import { AddFeed } from "./AddFeed";
 
 import "./Feeds.css";
 
-function submitHandler() {}
-
 export function Feeds(props) {
-  return (
-    <div className="container">
-      <form className="feed-form" onSubmit={() => submitHandler()}>
-        <div className="form-option">
-          <label htmlFor="feedName">Feed Name</label>
-          <input
-            type="text"
-            placeholder="Name"
-            id="feedName"
-            className="form-text"
-          />
-        </div>
-        <div className="form-option">
-          <label htmlFor="feedLink">Feed Link</label>
-          <input
-            type="text"
-            placeholder="Link"
-            id="feedLink"
-            className="form-text"
-          />
-        </div>
-        <button className="add-btn" id="addFeed">
-          Add
-        </button>
-      </form>
-      <div className="content">
-        <Response />
+  const [results, setResults] = useState([]);
+  function fetchData() {
+    axios
+      .get("/feeds")
+      .then((data) => {
+        setResults(data.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    setTimeout(fetchData, 1000);
+  }, []);
+
+  if (results.length > 0) {
+    return (
+      <div className="container">
+        <AddFeed method={setResults} />
+        <ul className="list-container">
+          {results.map((result) => {
+            const { feedId, name, link } = result;
+            return <Profile key={feedId} id={feedId} name={name} link={link} />;
+          })}
+        </ul>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="container">
+        <AddFeed method={setResults} />
+      </div>
+    );
+  }
 }
