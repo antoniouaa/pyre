@@ -3,3 +3,29 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.feed-form {
+    display: flex;
+    justify-content: left;
+    align-items: stretch;
+    margin-left: 3rem;
+    padding: 5px;
+}
+
+label,
+input {
+    display: block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.add-btn {
+    height: 2rem;
+    width: 3rem;
+    justify-self: center;
+}

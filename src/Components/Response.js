@@ -8,8 +8,10 @@ export function Response() {
   const [results, setResults] = useState([]);
   function fetchData() {
     axios
-      .get("/users")
-      .then((data) => setResults(data.data))
+      .get("/feeds")
+      .then((data) => {
+        setResults(data.data);
+      })
       .catch((err) => console.log(err));
   }
 
@@ -17,14 +19,14 @@ export function Response() {
     setTimeout(fetchData, 1000);
   }, []);
 
+  console.log(results);
+
   if (results.length > 0) {
     return (
       <ul className="list-container">
         {results.map((result) => {
-          const { id, username, name, email } = result;
-          return (
-            <Profile id={id} username={username} name={name} email={email} />
-          );
+          const { feedId, name, link } = result;
+          return <Profile key={feedId} id={feedId} name={name} link={link} />;
         })}
       </ul>
     );
