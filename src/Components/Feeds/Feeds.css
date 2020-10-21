@@ -36,3 +36,11 @@ input {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.list-item {
+    width: 20rem;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 0.25rem;
+    margin: 5px;
+}

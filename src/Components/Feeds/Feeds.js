@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { Profile } from "../Profile/Profile";
+import { Thumbnail } from "../Profile/Thumbnail";
 import { AddFeed } from "./AddFeed";
 
 import "./Feeds.css";
@@ -24,11 +24,15 @@ export function Feeds(props) {
   if (results.length > 0) {
     return (
       <div className="container">
-        <AddFeed method={setResults} />
+        <AddFeed onDataInsert={() => fetchData()} />
         <ul className="list-container">
           {results.map((result) => {
-            const { feedId, name, link } = result;
-            return <Profile key={feedId} id={feedId} name={name} link={link} />;
+            const { id, name, link } = result;
+            return (
+              <li className="list-item" key={id}>
+                <Thumbnail key={id} id={id} name={name} link={link} />
+              </li>
+            );
           })}
         </ul>
       </div>
@@ -36,7 +40,7 @@ export function Feeds(props) {
   } else {
     return (
       <div className="container">
-        <AddFeed method={setResults} />
+        <AddFeed onDataInsert={() => fetchData()} />
       </div>
     );
   }

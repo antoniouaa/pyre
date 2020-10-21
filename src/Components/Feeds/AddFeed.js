@@ -1,20 +1,22 @@
 import React from "react";
 import axios from "axios";
 
-function submitHandler(event) {
-  event.preventDefault();
-  const [name, link] = event.target;
-  const addFeedForm = new FormData();
-  addFeedForm.append("name", name.value);
-  addFeedForm.append("link", link.value);
-  axios
-    .post("/feeds/add", addFeedForm)
-    .then((resp) => console.log(resp))
-    .catch((err) => console.log(err));
-  window.location.reload();
-}
+export function AddFeed({ onDataInsert }) {
+  function submitHandler(event) {
+    event.preventDefault();
+    const [name, link] = event.target;
+    const addFeedForm = new FormData();
+    addFeedForm.append("name", name.value);
+    addFeedForm.append("link", link.value);
+    axios
+      .post("/feeds/add", addFeedForm)
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
+    onDataInsert();
+    name.value = "";
+    link.value = "";
+  }
 
-export function AddFeed({ setResults }) {
   return (
     <form className="feed-form" onSubmit={(e) => submitHandler(e)}>
       <div className="form-option">
