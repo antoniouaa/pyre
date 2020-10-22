@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import "./Profile.css";
 
 export function Thumbnail(props) {
-  const { feedId, name, link } = props;
+  const { id, title, link, dateAdded, description } = props;
 
   return (
-    <Link to={`/feeds/${name}`} className="result" key={feedId}>
-      <h3>{name}</h3>
+    <Link to={`/feeds/${title}`} className="result" key={id}>
+      <h2>{title}</h2>
       <div>
-        <p>{link.toLowerCase()}</p>
+        <p>Added on: {dateAdded}</p>
+        <h4>{link.toLowerCase()}</h4>
+        {description ? <p>{description}</p> : <p>No description available</p>}
       </div>
     </Link>
   );

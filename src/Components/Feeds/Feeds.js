@@ -27,10 +27,17 @@ export function Feeds(props) {
         <AddFeed onDataInsert={() => fetchData()} />
         <ul className="list-container">
           {results.map((result) => {
-            const { id, name, link } = result;
+            const { id, title, link, dateAdded, description } = result;
             return (
               <li className="list-item" key={id}>
-                <Thumbnail key={id} id={id} name={name} link={link} />
+                <Thumbnail
+                  key={id}
+                  id={id}
+                  title={title}
+                  link={link}
+                  dateAdded={dateAdded}
+                  description={description}
+                />
               </li>
             );
           })}
