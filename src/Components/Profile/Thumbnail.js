@@ -7,7 +7,7 @@ export function Thumbnail(props) {
   const { feedId, name, link } = props;
 
   return (
-    <Link to={`/${name}`} className="result" key={feedId}>
+    <Link to={`/feeds/${name}`} className="result" key={feedId}>
       <h3>{name}</h3>
       <div>
         <p>{link.toLowerCase()}</p>

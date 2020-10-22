@@ -7,6 +7,7 @@ import { Home } from "./Components/Home/Home";
 import { Footer } from "./Components/Footer/Footer";
 import { About } from "./Components/About/About";
 import { Contact } from "./Components/Contact/Contact";
+import { FeedProfile } from "./Components/Profile/FeedProfile";
 
 import "./App.css";
 
@@ -16,21 +17,12 @@ function App() {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/feeds">
-            <Feeds />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/feeds/:name" component={FeedProfile} />
+          <Route path="/home" component={Home} />
+          <Route path="/feeds" component={Feeds} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route exact path="/" component={Home} />
         </Switch>
         <Footer />
       </div>
